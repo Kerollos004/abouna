@@ -14,13 +14,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+
+
 export const metadata = {
   title: 'منصة ⲟⲩⲏⲃ',
   description: 'إدارة وعرض مواعيد الآباء الكهنة',
-  manifest: '/manifest.json', // هنا بنربط ملف المنفيست
-  themeColor: '#F6EFE0',     // لون شريط المتصفح المتناسق مع ثيمك
+  manifest: '/manifest.json',
+  icons: {
+    icon: '/images/kahen-logo-removebg-preview.png',
+    apple: '/images/kahen-logo-removebg-preview.png',
+  },
 };
 
+export const viewport = {
+  themeColor: '#F6EFE0', // أو #F6EFE0 حسب الثيم الأساسي اللي تحبه لشريط المتصفح
+};
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
