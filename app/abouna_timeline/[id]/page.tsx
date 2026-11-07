@@ -2,6 +2,20 @@ import React, { Suspense } from 'react'
 import SideMenu from '@/app/components/timelinecomponents/SideMenu'
 import RenderdData from '@/app/components/timelinecomponents/RenderdData'
 import { supabase } from '@/app/assets/supabase_client';
+
+import { Metadata } from "next";
+
+export const metadata:Metadata = {
+title: 'منصة/ صفحه الكاهن ⲟⲩⲏⲃ',
+description: 'إدارة وعرض مواعيد الآباء الكهنة',
+manifest: '/manifest.json',
+icons: {
+    icon: '/images/kahen-logo-removebg-preview.png',
+    apple: '/images/kahen-logo-removebg-preview.png', 
+},
+};
+
+
 async function TimelineContent({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params 
     

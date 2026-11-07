@@ -3,9 +3,15 @@ import Header from '../components/basiccomponents/Header'
 import Footer from '../components/basiccomponents/Footer'
 import RegisterForm from '../components/registercomponents/RegisterForm'
 import { Metadata } from "next";
-export const metadata: Metadata = {
-    title: "صفحه تسجيل الدخول ",
-    description: "منصه ⲟⲩⲏⲃ للاباء الكهنه",
+
+export const metadata:Metadata = {
+title: 'منصة/تسجيل الدخول ⲟⲩⲏⲃ',
+description: 'إدارة وعرض مواعيد الآباء الكهنة',
+manifest: '/manifest.json',
+icons: {
+    icon: '/images/kahen-logo-removebg-preview.png',
+    apple: '/images/kahen-logo-removebg-preview.png', 
+},
 };
 export default function Register() {
     return (
