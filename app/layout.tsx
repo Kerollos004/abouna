@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "./globals.css"; // تأكد إن السطر ده موجود عشان Tailwind يشتغل!
 import { ThemeProvider, MenuProvider , MenuValueProvider } from "./assets/contexts";
 import MobMenu from "./components/basiccomponents/MobMenu";
 
@@ -14,19 +14,22 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'منصة ⲟⲩⲏⲃ',
   description: 'إدارة وعرض مواعيد الآباء الكهنة',
-  manifest: '/manifest.json', // هنا بنربط ملف المنفيست
-  themeColor: '#F6EFE0',     // لون شريط المتصفح المتناسق مع ثيمك
+  manifest: '/manifest.json',
 };
 
+// فصل لون شريط المتصفح بالطريقة الحديثة لـ Next.js
+export const viewport = {
+  themeColor: '#F6EFE0',
+};
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       dir="rtl"
-      lang="en"
+      lang="ar" // يفضل تكون "ar" عشان اللغة العربية والـ RTL
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
