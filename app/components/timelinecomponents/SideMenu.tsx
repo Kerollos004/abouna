@@ -9,7 +9,7 @@ import { XCircleFill ,MoonFill , BrightnessHighFill, Icon   , BoxArrowLeft} from
 export default function SideMenu() {
     const {setValue} = useMenuValueContext()
     const { setTheme, theme } = useThemeContext()
-    const [activeBtnId , setActiveBtnId] = useState<string>("today")
+    const [activeBtnId , setActiveBtnId] = useState<string>("all_data")
     const {setOpenMenu , openMenu} = useMenuContext()
         const getTheme = () => {
             const currentTheme = localStorage.getItem("theme")

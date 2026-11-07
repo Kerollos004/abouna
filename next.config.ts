@@ -1,20 +1,16 @@
-import type { NextConfig } from "next";
+import withPWAInit from 'next-pwa';
 
-const nextConfig: NextConfig = {
-  /* config options here */
-  experimental: {
-    agentFeedback: true,
-  },
-  cacheComponents: true,
-  partialPrefetching: true,
-  turbopack: {
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
-      },
-    },
-  },
+const withPWA = withPWAInit({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === 'development',
+});
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // إضافة إعداد فارغ لـ turbopack لمنع خطأ التضارب مع next-pwa
+  turbopack: {},
 };
 
-export default nextConfig;
+export default withPWA(nextConfig);

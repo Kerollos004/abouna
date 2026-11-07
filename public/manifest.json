@@ -1,0 +1,21 @@
+{
+    "name": "منصة الآباء الكهنة",
+    "short_name": "ⲟⲩⲏⲃ",
+    "description": "منصة لإدارة وعرض مواعيد الآباء الكهنة",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#F6EFE0",
+    "theme_color": "#130206",
+    "icons": [
+    {
+        "src": "/images/kahen-logo-removebg-preview.png",
+        "sizes": "192x192",
+        "type": "image/png"
+    },
+    {
+    "src": "/images/kahen-logo-removebg-preview.png",
+        "sizes": "512x512",
+        "type": "image/png"
+    }
+]
+}
