@@ -75,7 +75,7 @@ export const useMenuValueContext = () => {
 };
 
 export const MenuValueProvider = ({ children }: {children:ReactNode}) => {
-    const [value, setValue] = useState<string>("today");
+    const [value, setValue] = useState<string>("all_data");
     return (
         <MenuValueContext.Provider value={{ value, setValue }}>
             {children}

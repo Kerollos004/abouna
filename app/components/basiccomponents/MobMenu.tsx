@@ -47,7 +47,9 @@ export default function MobMenu() {
         : "text-amber-100 hover:bg-amber-400/10"
         }`
     
-    const addBtn = `flex h-14 w-14  items-center justify-center rounded-full text-3xl shadow-lg border-4 transition-colors ${
+    const addBtn = `
+        ${owner?"flex":"hidden"}
+        h-14 w-14  items-center justify-center rounded-full text-3xl shadow-lg border-4 transition-colors ${
         theme==="light"
         ? "bg-rose-950 text-amber-200 border-[#FBF6EA]"
         : "bg-amber-300 text-rose-950 border-rose-950"

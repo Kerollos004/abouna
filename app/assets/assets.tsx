@@ -8,14 +8,14 @@ export interface button {
 
 export const buttons: button[] = [
     {
+        id: "all_data", 
+        text:"كل المواعيد"
+    },
+    {
         id: "today", 
         text:"اليوم"
     },
 
-    {
-        id: "all_data", 
-        text:"كل المواعيد"
-    },
 
     {
         id: "mass", 

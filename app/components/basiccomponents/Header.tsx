@@ -127,7 +127,7 @@ export default function Header() {
                 }
 
                 <Link 
-                    className='flex px-5 py-2.5 text-amber-200 bg-rose-900 border rounded-full hover:bg-amber-200 hover:text-rose-950  items-center gap-2  ' 
+                    className={` ${owner ? "flex" : "hidden"} px-5 py-2.5 text-amber-200 bg-rose-900 border rounded-full hover:bg-amber-200 hover:text-rose-950  items-center gap-2  `} 
                     href={"/add_appointment"}
                 >
                     <span> اضافه موعد</span>
