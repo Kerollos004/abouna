@@ -20,7 +20,7 @@ export default function About() {
                 </div>
 
                 {/* قسم الصورة */}
-                <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-md">
+                <div className="relative w-full h-[450px] rounded-2xl overflow-hidden shadow-md">
                     <Image
                         src={aboutImg}
                         alt="صورة توضيحية لخدمة الآباء الكهنة"

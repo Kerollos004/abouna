@@ -3,9 +3,10 @@ import { useThemeContext , useMenuContext, useMenuValueContext } from '@/app/ass
 import React, { useState } from 'react'
 import { buttons } from '@/app/assets/assets'
 import { useEffect } from 'react'
+import Link from 'next/link'
 import { supabase } from '@/app/assets/supabase_client'
 import { useRouter } from 'next/navigation'
-import { XCircleFill ,MoonFill , BrightnessHighFill, Icon   , BoxArrowLeft} from 'react-bootstrap-icons'
+import { XCircleFill ,MoonFill , BrightnessHighFill, Icon   , BoxArrowLeft , HouseFill} from 'react-bootstrap-icons'
 export default function SideMenu() {
     const {setValue} = useMenuValueContext()
     const { setTheme, theme } = useThemeContext()
@@ -89,6 +90,16 @@ return (
             المواعيد
         </h3>
         {btnsMap}
+        <Link  className={`w-full my-1 text-right flex items-center gap-1 p-3 text-xl pr-5.5 rounded-3xl border border-transparent transition-colors ${
+            theme === "light"
+                ? "bg-rose-950/5 text-rose-950 hover:bg-rose-950/10 hover:border-amber-600/40"
+                : "bg-black/20 text-amber-50 hover:bg-amber-400/10 hover:border-amber-400/30"
+            }`}
+            href={"/"}
+        >
+            الصفحه الرئيسيه
+            <HouseFill/>
+        </Link>
         <button
             onClick={handleChangeTheme}
             className={`w-full my-1 text-right flex items-center gap-1 p-3 text-xl pr-5.5 rounded-3xl border border-transparent transition-colors ${
@@ -104,7 +115,8 @@ return (
         </button>
 
         <button
-            onClick={async(e: React.MouseEvent) => {
+            onClick={async (e: React.MouseEvent) => {
+                e.preventDefault()
                 await handleLogout()
             }}
             className={`w-full my-1 text-right flex items-center gap-1 p-3 text-xl pr-5.5 rounded-3xl border border-transparent transition-colors ${
@@ -116,6 +128,8 @@ return (
             <BoxArrowLeft/>
 
         </button>
+
+
 
         <XCircleFill onClick={()=>{setOpenMenu(false)}} className=' absolute top-2.5 text-2xl md:hidden left-2.5 ' />
     </aside>

@@ -1,16 +1,60 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { User } from '@/app/assets/assets';
+import { supabase } from '@/app/assets/supabase_client';
+import { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+
 
 export default function Footer() {
     const [message, setMessage] = useState('');
+    const [accountOwner , setAccountOwner]  = useState<User | null>(null)
 
-    const handleSubmit = (e:React.FormEvent) => {
-        e.preventDefault();
-        // أضف كود إرسال الرسالة هنا
-        console.log("Submitted support message:", message);
-        setMessage('');
-    };
+
+    const getOwner = async () => {
+        const { data: authUser, error: authError } = await supabase.auth.getUser()
+        if (!authUser || authError) {
+            console.log("error in getting user" , authError?.message)
+        }
+        if (authUser) {
+            const { data: owner, error: ownerError } = await supabase.from("users").select("*").eq("id", authUser?.user?.id).maybeSingle()
+            if (!owner || ownerError) {
+                console.log("error in getting owner" , ownerError?.message)
+            }
+            if (owner) {
+                setAccountOwner(owner)
+            }
+        }
+    }
+
+    useEffect(() => {
+        getOwner()
+    }, [])
+    
+
+const form = useRef<HTMLFormElement>(null);
+
+const sendEmail = (e:React.FormEvent) => {
+    e.preventDefault();
+    if (form.current) {
+    emailjs
+        .sendForm('service_9wh4z79', 'template_ged5qu8', form?.current, {
+        publicKey: 'FNOKCmc_vD4QP74to',
+    })
+    .then(
+        () => {
+            console.log('SUCCESS!');
+        },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (error:any) => {
+            console.log('FAILED...', error.text);
+        },
+    );
+    setMessage("")
+    }
+};
 
     return (
         <footer className="bg-rose-950  pt-12 pb-6 px-4 md:px-10" dir="rtl">
@@ -40,7 +84,11 @@ export default function Footer() {
                     <p className="text-xl ">
                         هل لديك استفسار أو اقتراح لتطوير الخدمة؟ أرسل لنا وسنتواصل معك.
                     </p>
-                    <form onSubmit={handleSubmit} className="flex items-center gap-2 pt-1">
+                    <form 
+                        ref={form}
+                        onSubmit={sendEmail} className="flex items-center gap-2 pt-1">
+                        <input type="text" value={accountOwner?.name} name="name" readOnly className='hidden' />
+                        <input type="text" value={accountOwner?.email} name="email" readOnly className='hidden' />
                         <input 
                             type="text" 
                             value={message}
@@ -48,6 +96,7 @@ export default function Footer() {
                             placeholder="اكتب ملاحظتك أو استفسارك..." 
                             className="w-full px-4 py-2.5 rounded-xl bg-rose-900/40 border border-rose-800 text-amber-50 placeholder-amber-200/40 text-sm focus:outline-none focus:border-amber-400 transition-colors"
                             required
+                            name='message'
                         />
                         <button 
                             type="submit" 
