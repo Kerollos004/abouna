@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 
 
-export const metadata = {
+export const metadata:Metadata = {
   title: 'منصة ⲟⲩⲏⲃ',
   description: 'إدارة وعرض مواعيد الآباء الكهنة',
   manifest: '/manifest.json',

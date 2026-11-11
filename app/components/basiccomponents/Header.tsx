@@ -30,6 +30,8 @@ export default function Header() {
         }
     }, [])
 
+
+
     const RenderedTheme = theme==="light" ? MoonFill : BrightnessHighFill
 
     const handleTheme = () => {

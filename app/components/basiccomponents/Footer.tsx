@@ -87,8 +87,8 @@ const sendEmail = (e:React.FormEvent) => {
                     <form 
                         ref={form}
                         onSubmit={sendEmail} className="flex items-center gap-2 pt-1">
-                        <input type="text" value={accountOwner?.name} name="name" readOnly className='hidden' />
-                        <input type="text" value={accountOwner?.email} name="email" readOnly className='hidden' />
+                        <input type="text" value={accountOwner?.name || ""} name="name" readOnly className='hidden' />
+                        <input type="text" value={accountOwner?.email || ""} name="email" readOnly className='hidden' />
                         <input 
                             type="text" 
                             value={message}

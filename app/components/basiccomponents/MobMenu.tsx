@@ -12,6 +12,12 @@ import { PersonFill , MoonFill , BrightnessHighFill , Plus ,  HouseFill  } from 
 export default function MobMenu() {
     const [owner, setOwner] = useState<User | null>(null)
     const { theme, setTheme } = useThemeContext()
+
+
+
+
+
+
         const RenderedTheme = theme==="light" ? MoonFill : BrightnessHighFill
     
         const handleTheme = () => {
